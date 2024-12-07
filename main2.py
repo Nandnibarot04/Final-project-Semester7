@@ -6,7 +6,7 @@ from ultralytics import YOLO
 import os
 
 # Streamlit app
-st.title("🌟 AI-Powered Detection: Road & General Objects")
+st.title("AI-Powered: Road sign Clasiification & General Objects  Detection")
 
 st.write("Upload an image to detect road signs using YOLO.")
 
@@ -14,7 +14,7 @@ st.write("Upload an image to detect road signs using YOLO.")
 st.sidebar.title("Detection Settings")
 detection_type = st.sidebar.selectbox(
     "Choose Detection Type",
-    ["Traffic Sign Detection", "Object Detection"]
+    ["Traffic Sign Classification", "General Object Detection"]
 )
 
 # File uploader
@@ -41,7 +41,7 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_column_width=True)
 
     # Perform detection based on selected type
-    if detection_type == "Traffic Sign Detection":
+    if detection_type == "Traffic Sign Classification":
         st.subheader("Detecting Traffic Signs...")
         results = traffic_model(image)
 
@@ -61,7 +61,7 @@ if uploaded_file is not None:
         for class_name in set(detected_classes):
             st.write(f"- {class_name}")
 
-    elif detection_type == "Object Detection":
+    elif detection_type == "General Object Detection":
         st.subheader("Detecting General Objects...")
         results = general_model(image)
 
@@ -84,11 +84,11 @@ if uploaded_file is not None:
 st.sidebar.info(
     """
     Explore cutting-edge AI capabilities with our dual-purpose detection app! Harnessing the power of YOLOv8 models:
-    - **Road Sign Detection**: Optimized for multi-class detection with YOLOv8m, perfect for intricate traffic scenarios.
+    - **Road Sign Classification**: Optimized for multi-class Classification with YOLOv8m, perfect for intricate traffic scenarios.
     - **General Object Detection**: Leveraging YOLOv8n for swift and accurate identification of objects like cars, pedestrians, and more.
 
     Upload an image, analyze the results, and experience the power of AI-driven vision technology for autonomous systems and beyond.
     """
 )
 # Footer
-st.sidebar.info("Streamlit app for road sign and object detection using YOLO.")
+st.sidebar.info("Streamlit app for road sign Classification and object detection using YOLO.")
